@@ -1,0 +1,391 @@
+:root{
+  --burgundy: #5c1327;
+  --burgundy-dark: #3d0c1a;
+  --burgundy-light: #7a1f38;
+  --beige: #f3e9d8;
+  --beige-light: #faf5eb;
+  --text-dark: #2b1219;
+  --text-muted: #7a6a5f;
+  --whatsapp-green: #25D366;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+*{ box-sizing: border-box; margin:0; padding:0; }
+
+body{
+  font-family: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
+  background: var(--beige-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ===== Header / Hero (خلفية الصورة فقط، بدون تغيير) ===== */
+.hero{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 1;
+
+  background-color: var(--burgundy-dark);
+  background-image: url('rimas-banner.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--burgundy-dark) 0%, rgba(61,12,26,0.55) 12%, rgba(61,12,26,0) 28%);
+}
+
+.hero-content{
+  position: relative;
+  z-index: 2;
+  padding: 24px 16px 32px;
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+.hero-sub{
+  color: var(--beige);
+  font-size: 1.05rem;
+  letter-spacing: 1px;
+}
+
+@keyframes fadeIn{
+  from{ opacity:0; transform: translateY(12px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+
+/* ===== Main content ===== */
+.page{
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 30px 16px 110px;
+}
+
+.intro{
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.intro h2{
+  color: var(--burgundy);
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.intro p{
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+/* ===== Account cards (أبعاد ونسب مستوحاة من المشروع القديم) ===== */
+.accounts{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.account-card{
+  width: 90%;
+  max-width: 420px;
+  margin: 12px auto;
+  background: var(--beige-light);
+  border: 1px solid rgba(92,19,39,0.12);
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(92,19,39,0.12);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.account-card:hover{
+  transform: scale(1.01);
+  box-shadow: 0 14px 30px rgba(92,19,39,0.18);
+}
+
+.account-head{
+  height: 78px;
+  border-bottom: 2px solid var(--burgundy);
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.account-head img{
+  content-visibility: auto;
+  display: block;
+  width: auto;
+  height: 60px;
+  max-width: 85%;
+  object-fit: contain;
+}
+
+.account-field{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.field-label{
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.field-value{
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--text-dark);
+  word-break: break-word;
+  overflow-wrap: break-word;
+  direction: ltr;
+  text-align: right;
+  letter-spacing: 0.3px;
+}
+
+.copy-btn{
+  margin-top: 8px;
+  width: 100%;
+  min-height: 48px;
+  padding: 13px;
+  background: var(--beige);
+  border: 1.5px solid var(--burgundy);
+  color: var(--burgundy);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.copy-btn:hover{
+  background: var(--burgundy);
+  color: var(--beige-light);
+  transform: translateY(-2px);
+}
+
+.copy-btn:active{
+  transform: scale(0.96);
+}
+
+.copy-btn.copied{
+  background: var(--burgundy);
+  color: var(--beige-light);
+}
+
+.copy-btn:disabled{
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-style: dashed;
+}
+
+.note-badge{
+  margin-top: 8px;
+  padding: 10px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--beige-light);
+  background: linear-gradient(135deg, var(--burgundy), var(--burgundy-light));
+}
+
+/* ===== Footer ===== */
+.site-footer{
+  text-align: center;
+  padding: 22px;
+  background: var(--burgundy-dark);
+  color: var(--beige);
+  font-size: 0.88rem;
+}
+
+/* ===== WhatsApp floating button ===== */
+/* ===== WhatsApp bar داخل الصفحة ===== */
+/* ===== WhatsApp bar ===== */
+.whatsapp-bar{
+  width: 90%;
+  max-width: 420px;
+  min-height: 54px;
+  margin: 0 auto 22px;
+
+  /* نفس لون البطاقات */
+  background: var(--beige-light);
+
+  /* إطار أحمر/برغندي حول كامل الزر */
+  border: 1.5px solid var(--burgundy);
+
+  border-radius: 15px;
+
+  color: var(--whatsapp-green);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  padding: 12px 16px;
+
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: bold;
+  text-align: center;
+
+  box-shadow: 0 7px 20px rgba(92,19,39,0.10);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+    animation: whatsappPulse 6s ease-in-out infinite;
+}
+@keyframes whatsappPulse{
+  0%, 92%, 100%{
+    box-shadow: 0 7px 20px rgba(92,19,39,0.10);
+    transform: scale(1);
+  }
+  96%{
+    box-shadow: 0 0 0 8px rgba(37,211,102,0.18), 0 7px 20px rgba(92,19,39,0.10);
+    transform: scale(1.015);
+  }
+}
+.whatsapp-bar svg{
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+}
+
+.whatsapp-bar:hover{
+  background: var(--beige);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(92,19,39,0.15);
+}
+
+.whatsapp-bar:active{
+  transform: scale(0.98);
+}
+
+/* الهاتف الصغير */
+@media (max-width: 380px){
+  .whatsapp-bar{
+    width: 90%;
+    min-height: 50px;
+    padding: 10px 12px;
+    font-size: 0.78rem;
+    gap: 7px;
+  }
+
+  .whatsapp-bar svg{
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* الشاشات الكبيرة */
+@media (min-width: 700px){
+  .whatsapp-bar{
+    max-width: 460px;
+  }
+}
+
+/* ===== Copy confirmation toast ===== */
+.copy-toast{
+  position: fixed;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--burgundy-dark);
+  color: var(--beige-light);
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 1000;
+}
+
+.copy-toast.show{
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ===== Responsive ===== */
+
+/* هاتف صغير */
+@media (max-width: 380px){
+  .intro h2{ font-size: 1.3rem; }
+  .account-card{ padding: 15px; }
+  .field-value{ font-size: 0.92rem; }
+  .copy-btn{ font-size: 0.9rem; }
+}
+
+/* هاتف عادي */
+@media (max-width: 600px){
+  .whatsapp-float{ width: 52px; height: 52px; bottom: 16px; left: 16px; }
+}
+
+/* تابلت وكمبيوتر: نفس التصميم، البطاقة تتوسط الصفحة بعرض مريح للقراءة */
+@media (min-width: 700px){
+  .page{ max-width: 560px; }
+  .account-card{ max-width: 460px; }
+}
+/* ===== معلومات مطور الموقع ===== */
+
+.site-footer p{
+  margin-bottom: 4px;
+  font-size: 0.78rem;
+  color: rgba(243,233,216,0.75);
+}
+
+.site-footer strong{
+  display: block;
+  margin-bottom: 9px;
+  font-size: 1rem;
+  letter-spacing: 0.8px;
+}
+
+.developer-whatsapp{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  color: var(--whatsapp-green);
+  text-decoration: none;
+
+  font-size: 0.82rem;
+  font-weight: bold;
+
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.developer-whatsapp:hover{
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.developer-whatsapp:active{
+  transform: scale(0.97);
+}
+.account-name{
+  text-align:center;
+  font-size:.88rem;
+  font-weight:600;
+  color:var(--burgundy);
+  margin:10px 0 12px;
+}
